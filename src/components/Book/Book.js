@@ -18,11 +18,19 @@ const Book = () => {
     });
 
     const handleCheckInDate = (date) => {
-        setSelectedDate(date);
+        const newDates = {...selectedDate};
+        newDates.checkIn = date;
+        setSelectedDate(newDates);
     };
     const handleCheckOutDate = (date) => {
-        setSelectedDate(date);
+        const newDates = {...selectedDate};
+        newDates.checkOut = date;
+        setSelectedDate(newDates);
     };
+
+    const handleBooking = () => {
+        
+    }
     
     return (
         <div style={{ textAlign: 'center' }}>
@@ -34,7 +42,7 @@ const Book = () => {
                     <KeyboardDatePicker
                         disableToolbar
                         variant="inline"
-                        format="MM/dd/yyyy"
+                        format="dd/MM/yyyy"
                         margin="normal"
                         id="date-picker-inline"
                         label="Check In Date"
@@ -48,7 +56,7 @@ const Book = () => {
                         margin="normal"
                         id="date-picker-dialog"
                         label="Check Out Date"
-                        format="MM/dd/yyyy"
+                        format="dd/MM/yyyy"
                         value={selectedDate.checkOut}
                         onChange={handleCheckOutDate}
                         KeyboardButtonProps={{
@@ -56,7 +64,7 @@ const Book = () => {
                         }}
                     />
                 </Grid>
-                <Button variant="contained" color="primary">Book Now</Button>
+                <Button onClick={handleBooking} variant="contained" color="primary">Book Now</Button>
             </MuiPickersUtilsProvider>
         </div>
     );
